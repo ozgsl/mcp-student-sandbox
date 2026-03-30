@@ -1,11 +1,13 @@
-
 import math
 
-def fn_x(a, b, c):
 
-    d = b**2 - 4*a*c
+def find_roots(a, b, c):
+    """Return the real roots of the quadratic equation ax^2 + bx + c = 0."""
+    discriminant = b**2 - 4 * a * c
 
-    if d < 0: return None
+    if discriminant < 0:
+        return None
 
-    return ((-b + math.sqrt(d))/(2*a), (-b - math.sqrt(d))/(2*a))
-
+    positive_root = (-b + math.sqrt(discriminant)) / (2 * a)
+    negative_root = (-b - math.sqrt(discriminant)) / (2 * a)
+    return positive_root, negative_root
