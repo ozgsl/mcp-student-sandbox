@@ -1,21 +1,27 @@
+TAX_RATE = 0.15
+DEFAULT_LOG_FILE = "log.txt"
 
-def process_data(data):
 
-    res = []
+def calculate_total(amount, tax_rate=TAX_RATE):
+    return amount * (1 + tax_rate)
 
-    for d in data:
 
-        val = d * 1.15
+def format_total(total):
+    return f"Total: {total:.2f}"
 
-        s = f"Total: {val:.2f}"
 
-        print(s)
+def print_totals(totals):
+    for total in totals:
+        print(format_total(total))
 
-        res.append(val)
 
-    with open("log.txt", "a") as f:
+def append_results_to_log(results, log_file=DEFAULT_LOG_FILE):
+    with open(log_file, "a", encoding="utf-8") as file:
+        file.write(f"{results}\n")
 
-        f.write(str(res) + "\n")
 
-    return res
-
+def process_data(data, tax_rate=TAX_RATE, log_file=DEFAULT_LOG_FILE):
+    totals = [calculate_total(item, tax_rate) for item in data]
+    print_totals(totals)
+    append_results_to_log(totals, log_file)
+    return totals
