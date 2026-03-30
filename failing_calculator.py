@@ -6,7 +6,3 @@ def average_ratios(numbers):
 
     total = sum(100 / number for number in valid_numbers)
     return total / len(valid_numbers)
-
-
-if __name__ == "__main__":
-    print(average_ratios([10, 5, 0]))
