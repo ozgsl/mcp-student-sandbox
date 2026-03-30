@@ -1,17 +1,12 @@
-
 def average_ratios(numbers):
+    valid_numbers = [number for number in numbers if number != 0]
 
-    total = 0
+    if not valid_numbers:
+        raise ValueError("At least one non-zero number is required.")
 
-    for i in range(len(numbers)):
-
-        # BUG: Crashes on zero
-
-        total += 100 / numbers[i] 
-
-    return total / len(numbers)
+    total = sum(100 / number for number in valid_numbers)
+    return total / len(valid_numbers)
 
 
-
-print(average_ratios([10, 5, 0]))
-
+if __name__ == "__main__":
+    print(average_ratios([10, 5, 0]))
